@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+<h2>Trades</h2>
+<div id="chart"> BitCoin</div>
+<div id="trades"></div>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div style="padding: 10px; margin-bottom: 10px; background: pink; border: solid red 1px; color: red;">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<div id="buy_form" style="border: solid gray 1px; padding: 20px; margin-top: 10px;">
+    <h3>Buy crypto</h3>
+    <form action="/buy" method="post">
+        <input type="text" id="quantity" name="quantity" placeholder="ex 0.001"/>
+        <select id="symbol" name="symbol">
+            {% for s in symbols %}
+                <option>{{ s['symbol'] }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="buy" value="buy"/>
+    </form>
+</div>
+
+<div id="sell_form" style="border: solid gray 1px; padding: 20px; margin-top: 10px;">
+    <h3>Sell crypto</h3>
+
+    <form action="/sell" method="post">
+        <input type="text" id="sell_quantity" name="sell_quantity" placeholder="ex 0.001"/>
+        <select id="sell_symbol" name="sell_symbol">
+            {% for s in symbols %}
+                <option>{{ s['symbol'] }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="sell" value="sell"/>
+    </form>
+</div>
+
+<div id="balances">
+    <table>
+        {% for b in balances %}
+                <tr>
+                    <td>
+                        {{ b['asset'] }}
+                    </td>
+                    <td>
+                        {{ b['free'] }}
+                    </td>
+                </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div id="settings">
+    <input type="checkbox">
+    <label>RSI</label>
+    <input type="text" id="rsi_length" name="rsi_length" placeholder="14">
+
+    <br />
+    <br />
+    <label>OverSold</label>
+    <input type="text" id="rsi_oversold" name="rsi_oversold" placeholder="20">
+
+    <br />
+    <br />
+
+    <label>OverBought</label>
+    <input type="text" id="rsi_overbought" name="rsi_overbought" placeholder="80">
+</div>
+
+<script src="{{ url_for('static', filename='chart.js') }}"></script>
+</body>
+</html>
