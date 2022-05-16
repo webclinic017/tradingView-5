@@ -1,4 +1,12 @@
-This is a basic trading view with live update of Bitcoin prices from Binance web sockets, created using python-binance, TALib and server running with Flask.
+This is a basic trading view with live update of Bitcoin prices from Binance web sockets, created using python-binance and server running with Flask.
+
+<br />
+
+0. Install dependencies with
+
+```
+$ pip install -r requirements.txt
+```
 
 <br />
 
@@ -8,14 +16,18 @@ This is a basic trading view with live update of Bitcoin prices from Binance web
 
 2. Run the app 
 
-$ export FLASK_APP=app <br />
-$ flask run
+``` 
+$ export FLASK_APP=app
+$ flask run 
+```
 
 <br />
 - For debug mode
 
+```
 $ export FLASK_ENV=development <br />
 $ flask run
+```
 
 
 <br />
