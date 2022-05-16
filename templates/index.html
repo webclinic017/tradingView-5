@@ -7,7 +7,73 @@
 </head>
 <body>
 <h2>Trades</h2>
-<div id="chart"> BitCoin</div>
+<div id="chart">ETH</div>
+
+<div id="backtest" style="margin-top: 10px; border: solid gray 1px; padding: 20px; ">
+    <h2>Backtest</h2>
+
+    <form action="/backtest" method="post">
+        <div style="margin-top: 30px;">
+            <input type="text" id="backtest_quantity" name="backtest_quantity" placeholder="ex 0.001"/>
+            <select id="backtest_symbol" name="backtest_symbol">
+                {% for s in symbols %}
+                    <option>{{ s['symbol'] }}</option>
+                {% endfor %}
+            </select>
+            <label>RSI</label>
+            <input type="text" id="backtest_length" name="backtest_length" placeholder="14">
+
+            <br />
+            <br />
+            <label>OverSold</label>
+            <input type="text" id="backtest_oversold" name="backtest_oversold" placeholder="20">
+
+            <br />
+            <br />
+
+            <label>OverBought</label>
+            <input type="text" id="backtest_overbought" name="backtest_overbought" placeholder="80">
+
+            <input type="submit" name="backtest" value="backtest"/>
+        </div>
+    </form>
+</div>
+
+<div id="bot" style="margin-top: 10px; border: solid gray 1px; padding: 20px; ">
+    <h2>Bot</h2>
+
+    <form action="/bot" method="post">
+        <input type="text" id="rsi_quantity" name="rsi_quantity" placeholder="ex 0.001"/>
+        <select id="rsi_symbol" name="rsi_symbol">
+            {% for s in symbols %}
+                <option>{{ s['symbol'] }}</option>
+            {% endfor %}
+        </select>
+
+        <br />
+        <div style="margin-top: 30px;">
+            <label>RSI</label>
+            <input type="text" id="rsi_length" name="rsi_length" placeholder="14">
+
+            <br />
+            <br />
+            <label>OverSold</label>
+            <input type="text" id="rsi_oversold" name="rsi_oversold" placeholder="20">
+
+            <br />
+            <br />
+
+            <label>OverBought</label>
+            <input type="text" id="rsi_overbought" name="rsi_overbought" placeholder="80">
+
+            <input type="submit" name="initiate_bot" value="initiate_bot"/>
+        </div>
+    </form>
+
+
+
+</div>
+
 <div id="trades"></div>
 
 {% with messages = get_flashed_messages() %}
@@ -62,22 +128,7 @@
     </table>
 </div>
 
-<div id="settings">
-    <input type="checkbox">
-    <label>RSI</label>
-    <input type="text" id="rsi_length" name="rsi_length" placeholder="14">
 
-    <br />
-    <br />
-    <label>OverSold</label>
-    <input type="text" id="rsi_oversold" name="rsi_oversold" placeholder="20">
-
-    <br />
-    <br />
-
-    <label>OverBought</label>
-    <input type="text" id="rsi_overbought" name="rsi_overbought" placeholder="80">
-</div>
 
 <script src="{{ url_for('static', filename='chart.js') }}"></script>
 </body>

@@ -25,7 +25,7 @@ $ flask run
 - For debug mode
 
 ```
-$ export FLASK_ENV=development <br />
+$ export FLASK_ENV=development
 $ flask run
 ```
 
@@ -37,3 +37,19 @@ $ flask run
 and
 
 update `binanceSocket` variable in static/chart.js with the new ticker you want updated prices of.
+
+4. To try out the parameters, first get some historical data
+
+```commandline
+$ python get_data.py  
+```
+
+then 
+```commandline
+$ cd backtest/
+$ python backtest.py
+```
+
+Change parameters of RSI in the `backtest.py` script
+
+5. Add parameters to HTML page and start the bot for automated trading
