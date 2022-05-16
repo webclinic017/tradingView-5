@@ -1,4 +1,4 @@
-This is a basic trading view with live update of Bitcoin prices from Binance web sockets, created using python-binance and server running with Flask.
+This is a basic trading view with live update of Bitcoin prices from Binance web sockets, created using python-binance & LightWeight charts and server running with Flask.
 
 <br />
 
@@ -33,3 +33,7 @@ $ flask run
 <br />
 
 3. To get feed from a different ticker update the `ticker` variable in the `history` function in `app.py`
+
+and
+
+update `binanceSocket` variable in static/chart.js with the new ticker you want updated prices of.
