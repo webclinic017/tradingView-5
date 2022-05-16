@@ -1,0 +1,10 @@
+python-binance
+TA-Lib
+numpy
+websocket_client
+Flask
+jsonify
+flask-cors
+backtrader==1.9.76.123
+pandas
+matplotlib==3.2.2
