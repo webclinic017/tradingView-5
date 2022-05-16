@@ -1,4 +1,4 @@
-This is a basic trading view with live update of Bitcoin prices from Binance web sockets, created using python-binance & LightWeight charts and server running with Flask.
+This is a basic trading view with live update of Bitcoin prices from Binance web sockets, created using python-binance & LightWeight charts and server running with Flask. User can trade right from the interface, run backtests for RSI strategy over a 2 year period and run an automated bot to make trades with the RSI strategy
 
 <br />
 
